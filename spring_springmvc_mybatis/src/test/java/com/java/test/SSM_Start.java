@@ -2,9 +2,6 @@ package com.java.test;
 
 import org.mortbay.jetty.Server;
 
-/**
- * @author:chenzhiyun
- */
 public class SSM_Start {
 	public static final int PORT = 8889;
 	public static final String CONTEXT = "/";

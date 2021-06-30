@@ -33,17 +33,14 @@ public class BookServiceImpl implements BookService {
 	private AppointmentDao appointmentDao;
 
 
-	@Override
 	public Book getById(long bookId) {
 		return bookDao.queryById(bookId);
 	}
 
-	@Override
 	public List<Book> getList() {
 		return bookDao.queryAll(0, 1000);
 	}
 
-	@Override
 	@Transactional
 	/**
 	 * 使用注解控制事务方法的优点： 1.开发团队达成一致约定，明确标注事务方法的编程风格

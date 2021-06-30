@@ -11,7 +11,6 @@ public class InitSiteSign implements InitializingBean{
 	
 	private boolean init;
 
-	@Override
 	public void afterPropertiesSet() throws Exception {
 		if (init) {
 			initSiteService.initSite();
