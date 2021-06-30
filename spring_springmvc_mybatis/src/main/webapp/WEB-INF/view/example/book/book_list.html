@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="${style_path}/style/css/common/common.css?version=${style_version}"/>
+<#include "/common/common-js.html">
+<script type="text/javascript" src='${style_path}/style/js/book/book_list.js?version=${style_version}'></script>
+<title>图书列表</title>
+</head>
+<body>
+	<table>
+		<thead>
+			<tr>
+				<th>书名</th>
+				<th>数量</th>
+				<th>操作</th>
+			</tr>
+		</thead>
+		<tbody>
+			<#if list?? && (list?size>0)>
+				<#list list as book>
+					<tr>
+						<td>${book.name}</td>
+						<td>${book.number}</td>
+						<td><input type="button" value="查看图片" onclick="showImage();"/></td>
+					</tr>
+				</#list>
+			<#else>
+				<tr>
+					<td colspan="2">没有查询到记录</td>
+				</tr>
+			</#if>
+		</tbody>
+	</table>
+	<img id="book_image_id" style="display:none;" src="${style_path}/style/image/book/book_example.png"/>
+	<input id="book_image_show_flag" type="hidden" value="0"/>
+</body>
+</html>
