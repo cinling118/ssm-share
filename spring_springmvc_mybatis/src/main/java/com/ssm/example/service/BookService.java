@@ -34,5 +34,8 @@ public interface BookService {
 	 * @return
 	 */
 	AppointExecution appoint(long bookId, long studentId);
-
+	
+	void batchInsert();
+	
+	public List<Book> batchInsert(List<Book> bookList);
 }

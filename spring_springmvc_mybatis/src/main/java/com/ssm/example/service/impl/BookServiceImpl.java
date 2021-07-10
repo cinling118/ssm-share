@@ -1,6 +1,7 @@
 package com.ssm.example.service.impl;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -76,6 +77,33 @@ public class BookServiceImpl implements BookService {
 			//return new AppointExecution(bookId, AppointStateEnum.INNER_ERROR);//错误写法
 			throw new AppointException("appoint inner error:" + e.getMessage());
 		}
+	}
+
+	@Transactional
+	public void batchInsert(){
+		List<Book> bookList = new ArrayList<Book>();
+		for (int i=2000;i<10000;i++) {
+			Book book = new Book();
+			book.setBookId(i);
+			book.setName("name_" + i);
+			book.setNumber(i);
+			bookList.add(book);
+		}
+		
+		long startTime = System.currentTimeMillis();
+		for (Book book : bookList) {
+			bookDao.insert(book);
+		}
+		long endTime = System.currentTimeMillis();
+		System.out.println("总耗时(毫秒)：" + (endTime - startTime));
+	}
+	
+	@Transactional
+	public List<Book> batchInsert(List<Book> bookList){
+		for (Book book : bookList) {
+			bookDao.insert(book);
+		}
+		return bookList;
 	}
 
 }
